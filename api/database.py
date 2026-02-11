@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-
+#cria a coneccao
 # Formato: postgresql://usuario:senha@host:porta/nome_do_banco
 SQLALCHEMY_DATABASE_URL = "postgresql://postgres:123456@localhost:5432/db_ativos"
 

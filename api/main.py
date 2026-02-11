@@ -3,13 +3,14 @@ from sqlalchemy.orm import Session
 import models, schemas, crud
 from database import engine, get_db
 
+# define rotas
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="API de Gestão de Ativos Industriais")
 
 
 @app.post("/assets/", response_model=schemas.AssetResponse)
-def create_asset(asset: schemas.AssetCreate, db: Session = Depends(get_db)):
+def create_asset(asset: schemas.AssetBase, db: Session = Depends(get_db)):
     return crud.create_asset(db=db, asset=asset)
 
 

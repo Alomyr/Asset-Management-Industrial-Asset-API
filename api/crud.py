@@ -1,8 +1,9 @@
 from sqlalchemy.orm import Session
-import models, schemas  # Sem o ponto antes do models/schemas
+import models, schemas
 
 
-def create_asset(db: Session, asset: schemas.AssetCreate):
+# funcoes de salvar, consultar e etc
+def create_asset(db: Session, asset: schemas.AssetBase):
     db_asset = models.Asset(
         name=asset.name,
         description=asset.description,

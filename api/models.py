@@ -1,8 +1,13 @@
+from pydoc import describe
+import string
+from unicodedata import category
+from xmlrpc.client import Boolean
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 from database import Base
 
 
+# traduz do py para o banco de dados
 class Asset(Base):
     __tablename__ = "assets"
 
@@ -17,3 +22,15 @@ class Asset(Base):
 
     # Relacionamento para acessar o pai
     parent = relationship("Asset", remote_side=[id], backref="children")
+
+
+class User(Base):
+    __tablename__ = "users"
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, nullable=False)
+    email = Column(String, unique=True, index=True, nullable=True)
+    password = Column(String, nullable=False)
+    is_active = Column(Boolean, default=True)
+
+    parent_id = Column(Integer, ForeignKey("users.id"), nullable=True)
+    parent = relationship("User", remote_side=[id], backref="subordinates")
