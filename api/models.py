@@ -1,8 +1,6 @@
 from pydoc import describe
-import string
 from unicodedata import category
-from xmlrpc.client import Boolean
-from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy import Column, Integer, String, ForeignKey, Boolean
 from sqlalchemy.orm import relationship
 from database import Base
 

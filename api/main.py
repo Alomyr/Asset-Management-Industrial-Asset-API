@@ -19,7 +19,14 @@ def read_assets(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     return crud.get_assets(db, skip=skip, limit=limit)
 
 
-app = FastAPI(title="API de Gestão de Ativos Industriais")
+@app.post("/user/", response_model=schemas.UserResponse)
+def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
+    return crud.create_user(db=db, user=user)
+
+
+@app.get("/user/", response_model=schemas.UserResponse)
+def read_user(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    return crud.get_users(db, skip=skip, limit=limit)
 
 
 @app.get("/")
