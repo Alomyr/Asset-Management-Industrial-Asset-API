@@ -17,7 +17,6 @@ class AssetBase(BaseModel):
 # O que a API devolve (incluindo o ID gerado)
 class AssetResponse(AssetBase):
     id: int
-
     class confif:
         from_attributes = True
 
